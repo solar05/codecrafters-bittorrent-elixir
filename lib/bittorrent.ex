@@ -3,11 +3,11 @@ defmodule Bittorrent.CLI do
     case argv do
       ["decode" | [encoded_str | _]] ->
         # You can use print statements as follows for debugging, they'll be visible when running tests.
-        # IO.puts("Logs from your program will appear here!")
+        IO.puts("Logs from your program will appear here!")
 
-        decoded_str = Bencode.decode(encoded_str)
-        IO.puts(Jason.encode!(decoded_str))
-
+      # Uncomment this block to pass the first stage
+      # decoded_str = Bencode.decode(encoded_str)
+      # IO.puts(Jason.encode!(decoded_str))
       [command | _] ->
         IO.puts("Unknown command: #{command}")
         System.halt(1)
@@ -26,8 +26,9 @@ defmodule Bencode do
     case Enum.find_index(binary_data, fn char -> char == 58 end) do
       nil ->
         IO.puts("The ':' character is not found in the binary")
+
       index ->
-        rest = Enum.slice(binary_data, (index + 1)..-1)
+        rest = Enum.slice(binary_data, index+1..-1)
         List.to_string(rest)
     end
   end

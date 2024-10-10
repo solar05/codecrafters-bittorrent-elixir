@@ -24,7 +24,7 @@ defmodule Bencode do
     binary_data = :binary.bin_to_list(encoded_value)
 
     if encoded_number?(binary_data) do
-      Enum.slice(binary_data, 1..(Enum.count(encoded_value) - 2))
+      Enum.slice(binary_data, 1..(Enum.count(binary_data) - 2))
     else
       case Enum.find_index(binary_data, fn char -> char == 58 end) do
         nil ->

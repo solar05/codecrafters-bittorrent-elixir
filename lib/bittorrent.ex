@@ -6,7 +6,7 @@ defmodule Bittorrent.CLI do
         # IO.puts("Logs from your program will appear here!")
 
         decoded_str = Bencode.decode(encoded_str)
-        IO.puts(Jason.encode!(decoded_str))
+        IO.puts(decoded_str)
 
       [command | _] ->
         IO.puts("Unknown command: #{command}")

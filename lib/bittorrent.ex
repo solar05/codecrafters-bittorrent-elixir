@@ -6,7 +6,7 @@ defmodule Bittorrent.CLI do
         # IO.puts("Logs from your program will appear here!")
 
         decoded_str = Bencode.decode(encoded_str)
-        IO.puts(decoded_str)
+        IO.puts(Jason.encode!(decoded_str))
 
       [command | _] ->
         IO.puts("Unknown command: #{command}")
@@ -24,7 +24,7 @@ defmodule Bencode do
     binary_data = :binary.bin_to_list(encoded_value)
 
     if encoded_number?(binary_data) do
-      Enum.slice(binary_data, 1..(Enum.count(binary_data) - 2)) |> List.to_string()
+      Enum.slice(binary_data, 1..(Enum.count(encoded_value) - 2))
     else
       case Enum.find_index(binary_data, fn char -> char == 58 end) do
         nil ->

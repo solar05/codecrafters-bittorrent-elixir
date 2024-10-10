@@ -23,19 +23,19 @@ defmodule Bencode do
   def decode(encoded_value) when is_binary(encoded_value) do
     binary_data = :binary.bin_to_list(encoded_value)
 
-    if encoded_number?(binary_data) do
-      Enum.slice(binary_data, 1..(Enum.count(binary_data) - 2))
-      |> List.to_string()
-      |> String.to_integer()
-    else
-      case Enum.find_index(binary_data, fn char -> char == 58 end) do
-        nil ->
+    case Enum.find_index(binary_data, fn char -> char == 58 end) do
+      nil ->
+        if encoded_number?(binary_data) do
+          Enum.slice(binary_data, 1..(Enum.count(binary_data) - 2))
+          |> List.to_string()
+          |> String.to_integer()
+        else
           IO.puts("The ':' character is not found in the binary")
+        end
 
-        index ->
-          rest = Enum.slice(binary_data, (index + 1)..-1)
-          List.to_string(rest)
-      end
+      index ->
+        rest = Enum.slice(binary_data, (index + 1)..-1)
+        List.to_string(rest)
     end
   end
 

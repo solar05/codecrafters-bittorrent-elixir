@@ -1,4 +1,4 @@
-[![progress-banner](https://backend.codecrafters.io/progress/bittorrent/404190a8-3b15-4d0f-aa2d-c335791af35a)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
+[![progress-banner](https://backend.codecrafters.io/progress/bittorrent/404190a8-3b15-4d0f-aa2d-c335791af35a)](https://app.codecrafters.io/users/solar05?r=2qF)
 
 This is a starting point for Elixir solutions to the
 ["Build Your Own BitTorrent" Challenge](https://app.codecrafters.io/courses/bittorrent/overview).
